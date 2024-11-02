@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>디스코드 국가정보원 감사채널</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>국가 정보원 감사채널</h1>
+        <nav>
+            <ul>
+                <li><a href="#features">기능</a></li>
+                <li><a href="#installation">설치 방법</a></li>
+                <li><a href="#feedback">사용자 후기</a></li>
+            </ul>
+        </nav>
+        <div class="auth-buttons">
+            <button id="login-button">로그인</button>
+        </div>
+        <div id="user-info" style="display: none;">
+            <img id="user-avatar" alt="User Avatar" style="width: 50px; height: 50px; border-radius: 50%;">
+            <span id="user-name"></span>
+        </div>
+    </header>
+    <main>
+        <div class="button-container">
+            <a href="add-bot.html" class="add-bot-button">Add Bot</a>
+        </div>
+        <section id="features">
+            <h2>기능</h2>
+            <ul>
+                <li>누군가 봇을 추가하면 추가한 유저와 봇을 그즉시 추방합니다.</li>
+                <li>봇을 추가한 사람이 봇보다 권한이 높다면 유저는 추방되지 않지만 봇은 그즉시 추방합니다.</li>
+                <li>명령어를 이용해 보안알림(추방로그)가 뜰 채널을 선택가능하며 보안을 끄거나 킬수있습니다.</li>
+            </ul>
+        </section>
+        <section id="installation">
+            <h2>설치 방법</h2>
+            <p>봇 설치 방법을 여기에 설명하세요.</p>
+        </section>
+        <section id="feedback">
+            <h2>사용자 후기</h2>
+            <div class="feedback-form">
+                <textarea id="feedback-input" placeholder="후기를 입력하세요..."></textarea>
+                <button id="submit-feedback">제출</button>
+            </div>
+            <div class="feedback-list" id="feedback-list">
+                <!-- 제출된 후기가 여기에 표시됩니다. -->
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 디스코드 국각정보원 감사채널. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // 페이지 로드 시 기존 후기를 가져오는 함수
+        async function loadFeedback() {
+            const response = await fetch('/feedback');
+            const feedbacks = await response.json();
+            const feedbackList = document.getElementById('feedback-list');
+
+            feedbackList.innerHTML = ''; // 기존 내용을 비움
+            feedbacks.forEach(feedback => {
+                const feedbackItem = document.createElement('div');
+                feedbackItem.className = 'feedback-item';
+                feedbackItem.textContent = feedback;
+                feedbackList.appendChild(feedbackItem);
+            });
+        }
+
+        document.getElementById('submit-feedback').addEventListener('click', async function() {
+            const feedbackInput = document.getElementById('feedback-input');
+            const feedbackText = feedbackInput.value;
+
+            if (feedbackText) {
+                // 서버에 후기 추가 요청
+                await fetch('/feedback', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ feedback: feedbackText }),
+                });
+
+                feedbackInput.value = ''; // 제출 후 입력 필드 비우기
+                loadFeedback(); // 후기를 다시 로드
+            } else {
+                alert('후기를 입력하세요!');
+            }
+        });
+
+        // 페이지가 로드될 때 기존 후기를 가져옵니다.
+        loadFeedback();
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Bot Website</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Welcome to My Discord Bot Website</h1>
+  <p>Add the bot to your server by clicking the button below!</p>
+  <button onclick="window.location.href='https://discord.com/oauth2/authorize?...'">Add My Bot</button>
+</body>
+</html>
+
