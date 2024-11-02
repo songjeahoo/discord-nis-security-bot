@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>디스코드 국가정보원 감사채널</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* 기존 스타일을 유지하되 새로운 스타일 추가 */
+        /* ... */
+    </style>
 </head>
 <body>
     <header>
@@ -12,13 +16,9 @@
         <nav>
             <ul>
                 <li><a href="#features">기능</a></li>
-                <li><a href="#installation">설치 방법</a></li>
                 <li><a href="#feedback">사용자 후기</a></li>
             </ul>
         </nav>
-        <div class="auth-buttons">
-            <button id="login-button">로그인</button>
-        </div>
         <div id="user-info" style="display: none;">
             <img id="user-avatar" alt="User Avatar" style="width: 50px; height: 50px; border-radius: 50%;">
             <span id="user-name"></span>
@@ -26,7 +26,7 @@
     </header>
     <main>
         <div class="button-container">
-            <a href="add-bot.html" class="add-bot-button">Add Bot</a>
+            <a href="https://discord.com/oauth2/authorize?client_id=1297231459987226624&permissions=8&integration_type=0&scope=bot" class="add-bot-button">Add Bot</a>
         </div>
         <section id="features">
             <h2>기능</h2>
@@ -35,10 +35,6 @@
                 <li>봇을 추가한 사람이 봇보다 권한이 높다면 유저는 추방되지 않지만 봇은 그즉시 추방합니다.</li>
                 <li>명령어를 이용해 보안알림(추방로그)가 뜰 채널을 선택가능하며 보안을 끄거나 킬수있습니다.</li>
             </ul>
-        </section>
-        <section id="installation">
-            <h2>설치 방법</h2>
-            <p>봇 설치 방법을 여기에 설명하세요.</p>
         </section>
         <section id="feedback">
             <h2>사용자 후기</h2>
@@ -97,18 +93,3 @@
     </script>
 </body>
 </html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Bot Website</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <h1>Welcome to My Discord Bot Website</h1>
-  <p>Add the bot to your server by clicking the button below!</p>
-  <button onclick="window.location.href='https://discord.com/oauth2/authorize?...'">Add My Bot</button>
-</body>
-</html>
-
